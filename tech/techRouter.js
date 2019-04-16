@@ -18,6 +18,21 @@ router.get("/", (req, res) => {
     });
 });
 
+// GET a list of tech objects with user_id ----------
+
+router.get("/users/:id", (req, res) => {
+  const id = req.params.id;
+  db.getTechByUser(id)
+    .then(tech => {
+      //   console.log(res);
+      res.status(200).json(tech);
+    })
+    .catch(err => {
+      res.status(500).json(console.log(err));
+      //   { message: "The tech could not be retrieved!" }
+    });
+});
+
 // GET a tech object with the specified id ----------
 
 router.get("/:id", (req, res) => {

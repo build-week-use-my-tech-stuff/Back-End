@@ -7,7 +7,9 @@ module.exports = {
   update,
   remove,
   comment,
-  getTechComments
+  getTechComments,
+  getTechByUser,
+  getUsers
 };
 
 function get() {
@@ -16,6 +18,7 @@ function get() {
     .select({
       name: "tech.name",
       user: "users.username",
+      user_id: "tech.user_id",
       category: "tech.category",
       description: "tech.description",
       cost: "tech.cost",
@@ -23,6 +26,14 @@ function get() {
       picture: "tech.picture",
       id: "tech.id"
     });
+}
+
+function getTechByUser(id) {
+  return db("tech").where({ user_id: id });
+}
+
+function getUsers() {
+  return db("users");
 }
 
 function insert(tech) {
