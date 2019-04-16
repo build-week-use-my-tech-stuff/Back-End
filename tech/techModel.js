@@ -20,7 +20,8 @@ function get() {
       description: "tech.description",
       cost: "tech.cost",
       availability: "tech.availability",
-      picture: "tech.picture"
+      picture: "tech.picture",
+      id: "tech.id"
     });
 }
 
@@ -46,7 +47,11 @@ function getTechById(id) {
 function update(id, changes) {
   return db("tech")
     .where({ id })
-    .update(changes);
+    .update(changes)
+    .returning("id")
+    .then(ids => {
+      return getTechById(ids[0]);
+    });
 }
 
 function remove(id) {
