@@ -47,11 +47,7 @@ function getTechById(id) {
 function update(id, changes) {
   return db("tech")
     .where({ id })
-    .update(changes)
-    .returning("id")
-    .then(ids => {
-      return getTechById(ids[0]);
-    });
+    .update(changes);
 }
 
 function remove(id) {
