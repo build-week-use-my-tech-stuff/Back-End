@@ -1,6 +1,7 @@
 const express = require("express");
 
 const db = require("./techModel");
+// const restricted = require("../authorization/restricted");
 
 const router = express.Router();
 

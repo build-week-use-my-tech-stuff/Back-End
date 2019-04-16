@@ -7,9 +7,9 @@ module.exports = {
   update,
   remove,
   comment,
-  getTechComments,
-  getTechByUser,
-  getUsers
+  getTechComments
+  //   getTechByUser,
+  //   getUsers
 };
 
 function get() {
@@ -28,13 +28,13 @@ function get() {
     });
 }
 
-function getTechByUser(id) {
-  return db("tech").where({ user_id: id });
-}
+// function getTechByUser(id) {
+//   return db("tech").where({ user_id: id });
+// }
 
-function getUsers() {
-  return db("users");
-}
+// function getUsers() {
+//   return db("users");
+// }
 
 function insert(tech) {
   return db("tech")
