@@ -114,9 +114,9 @@ router.put("/:id", (req, res) => {
 // POST comments to a tech object with the specified id ----------
 
 router.post("/:id", (req, res) => {
-  //   const { tech_id } = req.params;
-  const { content, tech_id, user_id } = req.body;
-  //   const { user_id } = req;
+  const { tech_id } = req.params;
+  const { content } = req.body;
+  const { user_id } = req;
 
   if (content) {
     db.comment(tech_id, user_id, content)
