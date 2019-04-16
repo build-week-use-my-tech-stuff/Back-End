@@ -10,7 +10,6 @@ const router = express.Router();
 router.get("/", (req, res) => {
   db.getUsers()
     .then(users => {
-      //   console.log(res);
       res.status(200).json(users);
     })
     .catch(err => {

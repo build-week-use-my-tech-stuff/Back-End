@@ -14,3 +14,9 @@ function getUserById(id) {
 function getUsers() {
   return db("users");
 }
+
+// function get() {
+//     return db("tech")
+//     .leftJoin("users", "tech.user_id", "users.id")
+//     .leftJoin("comments", users )
+// }
