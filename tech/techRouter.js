@@ -1,20 +1,25 @@
 const express = require("express");
 
-const db = require("./techModel");
-const restricted = require("../authorization/restricted").restricted;
-
 const router = express.Router();
+const {
+  cloudinaryConfig,
+  uploader
+} = require("../cloudinary/cloudinaryConfig");
+const { multerUploads, dataUri } = require("../cloudinary/multer");
+const restricted = require("../authorization/restricted").restricted;
+const db = require("./techModel");
+cloudinaryConfig(router);
 
 // GET a list of tech objects ----------
 
 // router.get("/", (req, res) => {
 //   db.get()
 //     .then(tech => {
-//         tech.map(t => {
-//             const techWithCom = { ...t};
-//             db.getTechComments
-//         })
-//       res.status(200).json(tech);
+//       const techCom = tech.map(t => {
+//         db.getTechComments(t.id);
+//       });
+
+//       res.status(200).json(techCom);
 //     })
 //     .catch(err => {
 //       res.status(500).json(console.log(err));
@@ -113,7 +118,7 @@ router.put("/:id", restricted, async (req, res) => {
         if (updates) {
           db.getTechById(id)
             .then(updates => {
-              res.status(200).json(id);
+              res.status(200).json(updates);
             })
             .catch(err => {
               res
@@ -155,6 +160,29 @@ router.post("/:id", restricted, async (req, res) => {
   } else {
     res.status(400).json({
       message: "Please provide content before you submit this comment!"
+    });
+  }
+});
+
+// POST image to Cloudinary ----------
+
+router.post("/:id/upload", multerUploads, (req, res) => {
+  if (req.file) {
+    const file = dataUri(req).content;
+    return uploader.upload(file).then(result => {
+      const image = result.url;
+      return res
+        .status(200)
+        .json({
+          message: "Your image has been uploaded successfully to cloudinary",
+          image: image
+        })
+        .catch(err =>
+          res.status(400).json({
+            message: "Something went wrong while processing your request",
+            err: err
+          })
+        );
     });
   }
 });
