@@ -118,7 +118,7 @@ router.put("/:id", restricted, async (req, res) => {
         if (updates) {
           db.getTechById(id)
             .then(updates => {
-              res.status(200).json(updates);
+              res.status(200).json(id);
             })
             .catch(err => {
               res
