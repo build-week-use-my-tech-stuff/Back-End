@@ -107,7 +107,7 @@ router.put("/:id", restricted, async (req, res) => {
   const id = req.params.id;
   const updates = req.body;
 
-  if (updates.name) {
+  if (updates) {
     db.update(id, updates)
       .then(updates => {
         if (updates) {
@@ -131,9 +131,7 @@ router.put("/:id", restricted, async (req, res) => {
         //   { message: "The tech information could not be modified!" }
       });
   } else {
-    res
-      .status(400)
-      .json({ message: "Please provide the required fields for this tech!" });
+    res.status(400).json({ message: "Please provide updates for this tech!" });
   }
 });
 
