@@ -2,9 +2,12 @@
 
 ###### Back-End
 
-[logo]: https://files.slack.com/files-pri/T4JUEB3ME-FHZQF52PP/logo.jpg "Tech Xchange"
+Inline-style:
+![alt text](https://files.slack.com/files-pri/T4JUEB3ME-FHZQF52PP/logo.jpg "Tech Xchange")
 
-### Jamie Goodnight, Back-End Developer
+# Jamie Goodnight
+
+###### Back-End Developer
 
 ### Prerequisites (for local use)
 
