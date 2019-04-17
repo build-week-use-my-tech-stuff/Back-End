@@ -3,23 +3,43 @@ const jwt = require("jsonwebtoken");
 const kruptos = require("./kruptos").jwtKey;
 
 module.exports = {
-  restricted
+  restricted: (req, res, next) => {
+    const token = req.get("Authorization");
+
+    if (token) {
+      jwt.verify(token, kruptos, (err, decoded) => {
+        if (err) return res.status(401).json(err);
+
+        req.decoded = decoded;
+
+        next();
+      });
+    } else {
+      return res.status(401).json({
+        error: "No token provided, must be set on the Authorization Header"
+      });
+    }
+  }
 };
 
-function restricted(req, res, next) {
-  const token = req.get("Authorization");
+// module.exports = {
+//   restricted
+// };
 
-  if (token) {
-    jwt.verify(token, kruptos, (err, decoded) => {
-      if (err) return res.status(401).json(err);
+// function restricted(req, res, next) {
+//   const token = req.get("Authorization");
 
-      req.decoded = decoded;
+//   if (token) {
+//     jwt.verify(token, kruptos, (err, decoded) => {
+//       if (err) return res.status(401).json(err);
 
-      next();
-    });
-  } else {
-    return res.status(401).json({
-      error: "No token provided, must be set on the Authorization Header"
-    });
-  }
-}
+//       req.decoded = decoded;
+
+//       next();
+//     });
+//   } else {
+//     return res.status(401).json({
+//       error: "No token provided, must be set on the Authorization Header"
+//     });
+//   }
+// }

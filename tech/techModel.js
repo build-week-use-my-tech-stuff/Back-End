@@ -8,8 +8,6 @@ module.exports = {
   remove,
   comment,
   getTechComments
-  //   getTechByUser,
-  //   getUsers
 };
 
 function get() {
