@@ -2,8 +2,7 @@
 
 ###### Back-End
 
-Inline-style:
-![alt text](https://files.slack.com/files-pri/T4JUEB3ME-FHZQF52PP/logo.jpg "Tech Xchange")
+![Tech Xchange](https://imgur.com/q4wJuO0)
 
 # Jamie Goodnight
 
