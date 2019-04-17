@@ -118,7 +118,7 @@ router.put("/:id", restricted, async (req, res) => {
         if (updates) {
           db.getTechById(id)
             .then(updates => {
-              res.status(200).json(id);
+              res.status(200).json(updates);
             })
             .catch(err => {
               res
@@ -164,18 +164,18 @@ router.post("/:id", restricted, async (req, res) => {
   }
 });
 
-// POST image to Cloudinary ----------
+// POST picture to Cloudinary ----------
 
-router.post("/:id/upload", multerUploads, (req, res) => {
+router.post("/img/upload", multerUploads, (req, res) => {
   if (req.file) {
     const file = dataUri(req).content;
     return uploader.upload(file).then(result => {
-      const image = result.url;
+      const picture = result.url;
       return res
         .status(200)
         .json({
           message: "Your image has been uploaded successfully to cloudinary",
-          image: image
+          picture: picture
         })
         .catch(err =>
           res.status(400).json({
