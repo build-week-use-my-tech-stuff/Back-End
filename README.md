@@ -4,7 +4,7 @@
 
 [logo]: https://files.slack.com/files-pri/T4JUEB3ME-FHZQF52PP/logo.jpg "Tech Xchange"
 
-### Jamie Goodnight, ###### Back-End Developer
+### Jamie Goodnight, Back-End Developer
 
 ### Prerequisites (for local use)
 
@@ -75,7 +75,6 @@ Example of what to use:
     username: "Lambda",
     password: "testpassword"
 }
-```
 
 ---
 
@@ -91,7 +90,6 @@ Parameters:
 | ------------- | ---------- | -------- | --------------------------------- |
 | Authorization | **Header** | yes      | Acquired from a successful login. |
 
----
 
 ---
 
@@ -182,7 +180,6 @@ Parameters:
 
 ---
 
----
 
 ### Get Users
 
@@ -198,6 +195,6 @@ Method used: **[GET]** `/api/users/:id/`
 
 On Success: Returns a specific user.
 
----
 
 ---
+```
