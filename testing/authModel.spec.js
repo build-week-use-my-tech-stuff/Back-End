@@ -17,10 +17,6 @@ describe("authModel", () => {
       const usersTbl = await db("users");
       expect(usersTbl).toHaveLength(1);
     });
-    it("the inserted user's email should be testem", async () => {
-      await Auth.addUser(user);
-      expect(user.email).toBe("testem");
-    });
   });
   describe("getUserByName", () => {
     it("should insert the user, get that user by name, and return their password", async () => {
