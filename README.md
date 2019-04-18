@@ -1,6 +1,6 @@
 # Use My Tech Stuff
 
-###### Back-End/https://usemytechstuff.herokuapp.com/
+###### https://usemytechstuff.herokuapp.com/
 
 ![Tech Xchange](https://i.imgur.com/q4wJuO0.png) 
 
