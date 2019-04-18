@@ -77,6 +77,7 @@ Example of what to use:
     username: "Lambda",
     password: "testpassword"
 }
+```
 
 ---
 
@@ -91,7 +92,6 @@ Parameters:
 | Name          | Type       | Required | Notes                             |
 | ------------- | ---------- | -------- | --------------------------------- |
 | Authorization | **Header** | yes      | Acquired from a successful login. |
-
 
 ---
 
@@ -182,7 +182,6 @@ Parameters:
 
 ---
 
-
 ### Get Users
 
 Method used: **[GET]** `/api/users/`
@@ -197,6 +196,8 @@ Method used: **[GET]** `/api/users/:id/`
 
 On Success: Returns a specific user.
 
-
 ---
+
+```
+
 ```
