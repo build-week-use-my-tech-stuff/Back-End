@@ -72,7 +72,11 @@ router.post("/", restricted, async (req, res) => {
   if (newTech.name) {
     db.insert(newTech)
       .then(newTech => {
-        res.status(201).json(newTech);
+        if (newTech) {
+          db.get().then(tech => {
+            res.status(201).json(tech);
+          });
+        }
       })
       .catch(err => {
         console.log(err);
@@ -92,8 +96,8 @@ router.delete("/:id", restricted, async (req, res) => {
   db.remove(id)
     .then(tech => {
       if (tech) {
-        db.getTechById(id).then(tech => {
-          res.status(200).json(id);
+        db.get().then(tech => {
+          res.status(200).json(tech);
         });
       } else {
         res.status(404).json({
@@ -116,9 +120,9 @@ router.put("/:id", restricted, async (req, res) => {
     db.update(id, updates)
       .then(updates => {
         if (updates) {
-          db.getTechById(id)
-            .then(updates => {
-              res.status(200).json(updates);
+          db.get()
+            .then(tech => {
+              res.status(200).json(tech);
             })
             .catch(err => {
               res
